@@ -1,0 +1,32 @@
+{
+  "name": "micro-cert-certificate",
+  "version": "1.0.0",
+  "description": "A microservice to sign and verify achademic certificates.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc & node .",
+    "dev": "tsc -w & nodemon",
+    "test": "jest"
+  },
+  "author": "Oriol Egea",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.4",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "jest": "^27.0.4",
+    "nodemon": "^2.0.7",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.4"
+  }
+}

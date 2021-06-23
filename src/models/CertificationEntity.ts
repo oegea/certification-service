@@ -58,6 +58,30 @@ class CertificationEntity {
     }
 
     /**
+     * Retrieves and returns the current private key
+     * @returns Current private key
+     */
+    getPrivateKey(): string {
+      return this.privateKey;
+    }
+
+    /**
+     * Retrieves and returns the current public key
+     * @returns Current public key
+     */
+    getPublicKey(): string {
+      return this.publicKey;
+    }
+
+    /**
+     * Retrieves and returns the current verification address
+     * @returns Current verification address
+     */
+    getVerificationAddress(): string {
+      return this.verificationAddress;
+    }
+
+    /**
      * Gets an string that contains most important information
      * @returns Descriptive string
      */

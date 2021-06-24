@@ -2,10 +2,6 @@
 
 [![Build Status](https://travis-ci.com/oegea/certification-service.svg?branch=master)](https://travis-ci.com/oegea/certification-service) [![Coverage Status](https://coveralls.io/repos/github/oegea/certification-service/badge.svg?branch=master)](https://coveralls.io/github/oegea/certification-service?branch=master) ![Known Vulnerabilities](https://snyk.io/test/github/oegea/certification-service/badge.svg)
 
-## Work in Progress
-
-This project is still under development.
-
 ## Why?
 
 This is a easy-to-use service that allows to issue and sign basic text certificates. It has been designed specially for e-learning websites, trying to provide to them a way to generate certificates for their students in a de-centralized way.
@@ -17,7 +13,7 @@ However, although this has been created having in mind e-learning sites, its sim
 In order to compile and modify the project you need to install both dependencies and development dependencies.
 `npm` package manager has been used to create this project.
 
-A `npm install` just be enought to install required dependencies.
+A `npm install` should be enought to install required dependencies.
 
 ## Recommended development environment
 

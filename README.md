@@ -1,6 +1,6 @@
 # Text Certification Microservice
 
-![Known Vulnerabilities](https://snyk.io/test/github/oegea/certification-service/badge.svg)
+![Known Vulnerabilities](https://snyk.io/test/github/oegea/certification-service/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/oegea/certification-service/badge.svg?branch=master)](https://coveralls.io/github/oegea/certification-service?branch=master)
 
 ## Work in Progress
 

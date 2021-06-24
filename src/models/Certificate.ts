@@ -14,6 +14,9 @@ class Certificate {
     // Timestamp or date when the certificate has been issued
     private timeStamp: string;
 
+    // Name and relevant information about the certification
+    private certificationEntity: string;
+
     // Name and relevant information of the certified entity
     private certifiedEntity: string;
 
@@ -26,22 +29,23 @@ class Certificate {
     /**
      * CTOR
      * @param publicKey public key with which verify the certificate's signature
-     * @param timeStamp time when the certificate was signed
-     * @param certifiedEntity Name of the person or organization that receives the certificate
-     * @param data Data that is signed
+     * @param certifier Name of the person or organization that signs the certificate
+     * @param certified Name of the person or organization that receives the certificate
+     * @param data Data to be signed
      */
-    constructor(publicKey: string, timeStamp: string, certifiedEntity: string, data: string) {
+    constructor(publicKey: string, certifier: string, certified: string, data: string) {
       this.publicKey = publicKey;
-      this.timeStamp = timeStamp;
-      this.certifiedEntity = certifiedEntity;
+      this.certificationEntity = certifier;
+      this.certifiedEntity = certified;
       this.data = data;
     }
 
     /**
      * Defines the certificate's date to the actual moment
+     * @param timeStamp Timestamp to set
      */
-    private setTimestamp() {
-      this.timeStamp = new Date().toString();
+    private setTimestamp(timeStamp: string = null) {
+      this.timeStamp = (timeStamp !== null) ? timeStamp : new Date().toString();
     }
 
     /**
@@ -78,10 +82,9 @@ class Certificate {
      */
     public verify(): boolean {
       const data = this.toBuffer();
-
       const isVerified = crypto.verify(
         'sha256',
-        Buffer.from(data),
+        data,
         {
           key: this.publicKey,
         },
@@ -120,7 +123,13 @@ class Certificate {
      * @returns Not-very-readable string of the certificate
      */
     public toString(): string {
-      return JSON.stringify(this);
+      const {
+        verificationAddress, timeStamp, certificationEntity, certifiedEntity, data,
+      } = this;
+      const relevantInformation = {
+        verificationAddress, timeStamp, certificationEntity, certifiedEntity, data,
+      };
+      return JSON.stringify(relevantInformation);
     }
 
     /**

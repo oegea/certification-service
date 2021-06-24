@@ -26,3 +26,4 @@ These are the supported commands:
 * `npm start`: Compiles the project and starts it.
 * `npm run dev`: Compiles the project, start it, and recompiles when a `src` file is modified.
 * `npm test`: Runs tests.
+* `npm run test:coverage`: Runs tests with a code coverage report.

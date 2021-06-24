@@ -66,6 +66,14 @@ class Certificate {
     }
 
     /**
+     * Returns the certificate's verification address
+     * @returns Current verification address
+     */
+    public getVerificationAddress() {
+      return this.verificationAddress;
+    }
+
+    /**
      * Changes current public key of the certificate
      * @param publicKey Public key to set
      */

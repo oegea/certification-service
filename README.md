@@ -30,3 +30,30 @@ These are the supported commands:
 * `npm test`: Runs tests.
 * `npm run test:coverage`: Runs tests with a code coverage report.
 * `npm run coveralls`: Runs tests with a code coverage report and uploads it to coveralls. This command is only invoked from TravisCI to update the code coverage badge.
+
+## How to use
+
+### Generating a keys pair
+
+A keys pair is needed to issue and sign certificates. New key pair can be generated performing the following HTTP request:
+
+#### Request
+
+`GET /certification-entity/generate`
+
+No parameters are required.
+
+#### Response
+Just take the `publicKey` and `privateKey` parameters, and use them accordingly. Remember: Never expose your private key publicly.
+
+```json
+{
+    "success": true,
+    "data": {
+        "name": "",
+        "publicKey": "-----BEGIN RSA PUBLIC KEY----- ... -----END RSA PUBLIC KEY-----\n",
+        "privateKey": "-----BEGIN RSA PRIVATE KEY----- ... -----END RSA PRIVATE KEY-----\n",
+        "verificationAddress": ""
+    }
+}
+```

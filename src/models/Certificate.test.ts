@@ -17,6 +17,13 @@ beforeEach(() => {
   certificate = new Certificate(publicKey, CERTIFICATION_NAME, CERTIFIED_NAME, DATA_TO_CERTIFY);
 });
 
+describe('test getVerificationAddress and setVerificationAddress functions', () => {
+  it('should be able to set and recover the verificationAddress', () => {
+    certificate.setVerifictionAddress(VALID_VERIFICATION_ADDRESS);
+    expect(certificate.getVerificationAddress()).toBe(VALID_VERIFICATION_ADDRESS);
+  });
+});
+
 describe('test sign and verify functions', () => {
   it('should sign the data and verify it', () => {
     const privateKey = certificationEntity.getPrivateKey();

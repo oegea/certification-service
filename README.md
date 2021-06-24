@@ -33,9 +33,9 @@ These are the supported commands:
 
 ## How to use
 
-### Generating a keys pair
+### Generating a key pair
 
-A keys pair is needed to issue and sign certificates. New key pair can be generated performing the following HTTP request:
+A key pair is needed to issue and sign certificates. A new key pair can be generated performing the following HTTP request:
 
 #### Request
 
@@ -44,7 +44,7 @@ A keys pair is needed to issue and sign certificates. New key pair can be genera
 No parameters are required.
 
 #### Response
-Just take the `publicKey` and `privateKey` parameters, and use them accordingly. Remember: Never expose your private key publicly.
+Just take the `publicKey` and `privateKey` parameters, and save and use them accordingly. Remember: Never expose your private key publicly.
 
 ```json
 {
@@ -55,5 +55,86 @@ Just take the `publicKey` and `privateKey` parameters, and use them accordingly.
         "privateKey": "-----BEGIN RSA PRIVATE KEY----- ... -----END RSA PRIVATE KEY-----\n",
         "verificationAddress": ""
     }
+}
+```
+### Issuing and signing a new certificate
+
+Once you have your public and private keys, you can issue and sign a new certificate, performing the following http request.
+
+#### Request
+
+`POST /certificate/sign`
+
+**Parameters**:
+
+```json
+{
+	"privateKey": "-----BEGIN RSA PRIVATE KEY----- ... -----END RSA PRIVATE KEY-----\n",
+	"certificate": {
+		"verificationAddress": "",
+		"publicKey": "-----BEGIN RSA PUBLIC KEY----- ... -----END RSA PUBLIC KEY-----\n",
+		"certificationEntity": "Issuer",
+		"certifiedEntity": "Receiver",
+		"data": "Text to certify",
+		"signature": "",
+		"timestamp": ""
+	}
+}
+```
+
+#### Response
+
+The same object is returned, adding the `timestamp` and `signature` properties.
+
+```json
+{
+    "success": true,
+    "data": {
+        "certificate": {
+            "publicKey": "-----BEGIN RSA PUBLIC KEY----- ... -----END RSA PUBLIC KEY-----\n",
+            "certificationEntity": "Issuer",
+            "certifiedEntity": "Receiver",
+            "data": "Text to certify",
+            "timestamp": "Thu Jun 24 2021 20:41:35 GMT+0200 (hora de verano de Europa central)",
+            "verificationAddress": "",
+            "signature": "..."
+        },
+        "privateKey": "-----BEGIN RSA PRIVATE KEY----- ... -----END RSA PRIVATE KEY-----\n"
+    }
+}
+```
+
+### Validating a signature
+
+The following endpoint validates a certificate's signature. If there was specified a verification address, the authenticity of the public key is checked performing an http request to the indicated verification address.
+
+#### Request
+
+`POST /certificate/validate`
+
+**Parameters**:
+
+```json
+{
+    "publicKey": "-----BEGIN RSA PUBLIC KEY----- ... -----END RSA PUBLIC KEY-----\n",
+    "certificationEntity": "Issuer",
+    "certifiedEntity": "Receiver",
+    "data": "Text to certify",
+    "timestamp": "Thu Jun 24 2021 20:40:12 GMT+0200 (hora de verano de Europa central)",
+    "verificationAddress": "",
+    "signature": "..."
+}
+```
+
+#### Response
+
+A boolean is returned as a result.
+
+If there's a verification address, and the public key verification process fails, the certificate is considered not valid, and  `false` is returned.
+
+```json
+{
+    "success": true,
+    "data": false
 }
 ```

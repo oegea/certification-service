@@ -8,7 +8,8 @@
     "start": "tsc & node .",
     "dev": "tsc -w & nodemon",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "author": "Oriol Egea",
   "license": "MIT",

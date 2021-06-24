@@ -17,9 +17,12 @@ However, although this has been created having in mind e-learning sites, its sim
 In order to compile and modify the project you need to install both dependencies and development dependencies.
 `npm` package manager has been used to create this project.
 
+A `npm install` just be enought to install required dependencies.
+
 ## Recommended development environment
 
-VSCode with ESLint extension is recommended.
+VSCode with ESLint extension is recommended. 
+During the development, the extension has been configured to automatically fix code style errors following the airbnb style guide.
 
 ## Compiling and working
 
@@ -29,3 +32,4 @@ These are the supported commands:
 * `npm run dev`: Compiles the project, start it, and recompiles when a `src` file is modified.
 * `npm test`: Runs tests.
 * `npm run test:coverage`: Runs tests with a code coverage report.
+* `npm run coveralls`: Runs tests with a code coverage report and uploads it to coveralls. This command is only invoked from TravisCI to update the code coverage badge.

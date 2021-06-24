@@ -31,9 +31,16 @@ describe('test loadKeys function', () => {
   });
 });
 
-describe('test toString() function', () => {
+describe('test toString function', () => {
   it('should return name and verification address in a string', () => {
     certificationEntity.setVerificationAddress(VERIFICATION_ADDRESS);
     expect(certificationEntity.toString()).toBe(`${CERTIFICATION_ENTITY_NAME} - ${VERIFICATION_ADDRESS}`);
+  });
+});
+
+describe('test getVerificationAddress function', () => {
+  it('should be able to properly return verification address', () => {
+    certificationEntity.setVerificationAddress(VERIFICATION_ADDRESS);
+    expect(certificationEntity.getVerificationAddress()).toBe(VERIFICATION_ADDRESS);
   });
 });

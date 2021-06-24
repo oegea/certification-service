@@ -12,7 +12,7 @@ class Certificate {
     private publicKey: string;
 
     // Timestamp or date when the certificate has been issued
-    private timeStamp: string;
+    private timestamp: string;
 
     // Name and relevant information about the certification
     private certificationEntity: string;
@@ -38,14 +38,23 @@ class Certificate {
       this.certificationEntity = certifier;
       this.certifiedEntity = certified;
       this.data = data;
+      this.timestamp = '';
     }
 
     /**
-     * Defines the certificate's date to the actual moment
-     * @param timeStamp Timestamp to set
+     * Defines the certificate's date
+     * @param timestamp Timestamp to set
      */
-    private setTimestamp(timeStamp: string = null) {
-      this.timeStamp = (timeStamp !== null) ? timeStamp : new Date().toString();
+    public setTimestamp(timestamp: string = null) {
+      this.timestamp = ((timestamp !== null) ? timestamp : new Date().toString());
+    }
+
+    /**
+     * Retrieves the timestamp of the certificate
+     * @returns Current timestamp
+     */
+    public getTimestamp() {
+      return this.timestamp;
     }
 
     /**
@@ -70,6 +79,14 @@ class Certificate {
      */
     public setSignature(signature: string) {
       this.signature = signature;
+    }
+
+    /**
+     * Returns the current signature of the certificate
+     * @returns Current signature
+     */
+    public getSignature() {
+      return this.signature;
     }
 
     /**
@@ -132,10 +149,10 @@ class Certificate {
      */
     public toString(): string {
       const {
-        verificationAddress, timeStamp, certificationEntity, certifiedEntity, data,
+        verificationAddress, timestamp, certificationEntity, certifiedEntity, data,
       } = this;
       const relevantInformation = {
-        verificationAddress, timeStamp, certificationEntity, certifiedEntity, data,
+        verificationAddress, timestamp, certificationEntity, certifiedEntity, data,
       };
       return JSON.stringify(relevantInformation);
     }

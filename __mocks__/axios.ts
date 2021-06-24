@@ -1,4 +1,5 @@
 const TEST_PUBLIC_KEY = 'TEST_PUBLIC_KEY';
+const VALID_VERIFICATION_ADDRESS = 'http://www.public-keys.com';
 
 /**
  * Performs a GET http request
@@ -8,13 +9,15 @@ async function get(url: string) {
   // console.log(url);
   if (!url.includes('http')) { throw new Error(); }
 
-  const response:any = { };
-
-  if (url.includes('keys.json')) {
-    response.data = [TEST_PUBLIC_KEY];
+  // If we're retrieving authorized public keys
+  if (url.includes(VALID_VERIFICATION_ADDRESS)) {
+    return {
+      data: [TEST_PUBLIC_KEY],
+    };
   }
 
-  return response;
+  // If we're calling to a random http resource
+  return { data: 'random thing' };
 }
 
 exports.get = get;

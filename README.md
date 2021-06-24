@@ -1,5 +1,7 @@
 # Text Certification Microservice
 
+[![Known Vulnerabilities](https://snyk.io/test/github/oegea/certification-service/badge.svg)]
+
 ## Work in Progress
 
 This project is still under development.

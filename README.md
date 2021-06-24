@@ -18,7 +18,8 @@ A `npm install` should be enought to install required dependencies.
 ## Recommended development environment
 
 VSCode with ESLint extension is recommended. 
-During the development, the extension has been configured to automatically fix code style errors following the airbnb style guide.
+
+During the development, the extension [has been configured to automatically fix code style errors](https://www.digitalocean.com/community/tutorials/linting-and-formatting-with-eslint-in-vs-code#step-4-%E2%80%94-formatting-on-save) following the airbnb style guide.
 
 ## Compiling and working
 

@@ -1,6 +1,6 @@
 # Text Certification Microservice
 
-[!Build status](https://api.travis-ci.com/oegea/certification-service.svg?branch=master&status=created) [![Coverage Status](https://coveralls.io/repos/github/oegea/certification-service/badge.svg?branch=master)](https://coveralls.io/github/oegea/certification-service?branch=master) ![Known Vulnerabilities](https://snyk.io/test/github/oegea/certification-service/badge.svg)
+[![Build Status](https://travis-ci.com/oegea/certification-service.svg?branch=master)](https://travis-ci.com/oegea/certification-service) [![Coverage Status](https://coveralls.io/repos/github/oegea/certification-service/badge.svg?branch=master)](https://coveralls.io/github/oegea/certification-service?branch=master) ![Known Vulnerabilities](https://snyk.io/test/github/oegea/certification-service/badge.svg)
 
 ## Work in Progress
 

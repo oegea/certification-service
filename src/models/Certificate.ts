@@ -57,6 +57,14 @@ class Certificate {
     }
 
     /**
+     * Changes current public key of the certificate
+     * @param publicKey Public key to set
+     */
+    public setPublicKey(publicKey: string) {
+      this.publicKey = publicKey;
+    }
+
+    /**
      * Manually defines the signature of the certificate
      * @param signature String of the signature
      */
@@ -105,7 +113,7 @@ class Certificate {
         const keys = result.data;
 
         // We're expecting an array of keys, otherwise the public key is not legit
-        if (typeof keys !== 'object' || keys.length) { return false; }
+        if (typeof keys !== 'object' || !keys.length) { return false; }
 
         for (let i = 0; i < keys.length; i += 1) {
           const key = keys[i];

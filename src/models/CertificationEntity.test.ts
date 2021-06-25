@@ -2,12 +2,10 @@ import CertificationEntity from './CertificationEntity';
 
 const PUBLIC_KEY = 'PUBLIC_KEY';
 const PRIVATE_KEY = 'PRIVATE_KEY';
-const CERTIFICATION_ENTITY_NAME: string = 'Test';
-const VERIFICATION_ADDRESS: string = 'TestAddress';
 let certificationEntity: CertificationEntity;
 
 beforeEach(() => {
-  certificationEntity = new CertificationEntity(CERTIFICATION_ENTITY_NAME);
+  certificationEntity = new CertificationEntity();
 });
 
 describe('test generateKeys function', () => {
@@ -32,15 +30,8 @@ describe('test loadKeys function', () => {
 });
 
 describe('test toString function', () => {
-  it('should return name and verification address in a string', () => {
-    certificationEntity.setVerificationAddress(VERIFICATION_ADDRESS);
-    expect(certificationEntity.toString()).toBe(`${CERTIFICATION_ENTITY_NAME} - ${VERIFICATION_ADDRESS}`);
-  });
-});
-
-describe('test getVerificationAddress function', () => {
-  it('should be able to properly return verification address', () => {
-    certificationEntity.setVerificationAddress(VERIFICATION_ADDRESS);
-    expect(certificationEntity.getVerificationAddress()).toBe(VERIFICATION_ADDRESS);
+  it('should return the public key in a string', () => {
+    certificationEntity.loadKeys(PUBLIC_KEY, PRIVATE_KEY);
+    expect(certificationEntity.toString()).toBe(`${PUBLIC_KEY}`);
   });
 });

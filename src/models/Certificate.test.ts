@@ -10,7 +10,7 @@ const TEST_PUBLIC_KEY = 'TEST_PUBLIC_KEY';
 const VALID_VERIFICATION_ADDRESS = 'http://www.public-keys.com';
 
 beforeEach(() => {
-  certificationEntity = new CertificationEntity(CERTIFICATION_NAME);
+  certificationEntity = new CertificationEntity();
   certificationEntity.generateKeys();
   const publicKey = certificationEntity.getPublicKey();
 

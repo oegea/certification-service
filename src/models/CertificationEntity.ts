@@ -4,24 +4,16 @@ import crypto from 'crypto';
  * A person or organization that can issue and sign certificates
  */
 class CertificationEntity {
-    // Name of the organization
-    private name: string = '';
-
     // Public key with which verify the certificate signature
     private publicKey: string = '';
 
     // Private key with which sign certificates
     private privateKey: string = '';
 
-    // Optional http adress in where verify that the public key comes from a known organization
-    private verificationAddress: string = '';
-
     /**
      * CTOR
-     * @param name Name of the organization
      */
-    constructor(name: string) {
-      this.name = name;
+    constructor() {
     }
 
     /**
@@ -32,14 +24,6 @@ class CertificationEntity {
     loadKeys(publicKey: string, privateKey: string): void {
       this.publicKey = publicKey;
       this.privateKey = privateKey;
-    }
-
-    /**
-     * Defines the verification address
-     * @param verificationAddress HTTP url
-     */
-    setVerificationAddress(verificationAddress: string): void {
-      this.verificationAddress = verificationAddress;
     }
 
     /**
@@ -74,19 +58,11 @@ class CertificationEntity {
     }
 
     /**
-     * Retrieves and returns the current verification address
-     * @returns Current verification address
-     */
-    getVerificationAddress(): string {
-      return this.verificationAddress;
-    }
-
-    /**
      * Gets an string that contains most important information
      * @returns Descriptive string
      */
     toString(): string {
-      return `${this.name} - ${this.verificationAddress}`;
+      return `${this.publicKey}`;
     }
 }
 

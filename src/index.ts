@@ -26,7 +26,7 @@ app.post('/certificate/sign', (req, res) => {
     new SignatureRequest(null, null), req.body,
   );
   signatureRequest.sign();
-  res.status(200).send(new ServiceResponse(true, signatureRequest));
+  res.status(200).send(new ServiceResponse(true, certificate));
 });
 
 // Validates a certificate

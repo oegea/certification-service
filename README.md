@@ -44,16 +44,14 @@ A key pair is needed to issue and sign certificates. A new key pair can be gener
 No parameters are required.
 
 #### Response
-Just take the `publicKey` and `privateKey` parameters, and save and use them accordingly. Remember: Never expose your private key publicly.
+Just take the `publicKey` and `privateKey` parameters, save and use them accordingly. Remember: Never expose your private key publicly.
 
 ```json
 {
     "success": true,
     "data": {
-        "name": "",
         "publicKey": "-----BEGIN RSA PUBLIC KEY----- ... -----END RSA PUBLIC KEY-----\n",
-        "privateKey": "-----BEGIN RSA PRIVATE KEY----- ... -----END RSA PRIVATE KEY-----\n",
-        "verificationAddress": ""
+        "privateKey": "-----BEGIN RSA PRIVATE KEY----- ... -----END RSA PRIVATE KEY-----\n"
     }
 }
 ```
@@ -84,22 +82,19 @@ Once you have your public and private keys, you can issue and sign a new certifi
 
 #### Response
 
-The same object is returned, adding the `timestamp` and `signature` properties.
+The `certificate` object is returned back, filling the `timestamp` and `signature` properties.
 
 ```json
 {
     "success": true,
     "data": {
-        "certificate": {
-            "publicKey": "-----BEGIN RSA PUBLIC KEY----- ... -----END RSA PUBLIC KEY-----\n",
-            "certificationEntity": "Issuer",
-            "certifiedEntity": "Receiver",
-            "data": "Text to certify",
-            "timestamp": "Thu Jun 24 2021 20:41:35 GMT+0200 (hora de verano de Europa central)",
-            "verificationAddress": "",
-            "signature": "..."
-        },
-        "privateKey": "-----BEGIN RSA PRIVATE KEY----- ... -----END RSA PRIVATE KEY-----\n"
+        "publicKey": "-----BEGIN RSA PUBLIC KEY----- ... -----END RSA PUBLIC KEY-----\n",
+        "certificationEntity": "Issuer",
+        "certifiedEntity": "Receiver",
+        "data": "Text to certify",
+        "timestamp": "Thu Jun 24 2021 20:41:35 GMT+0200 (hora de verano de Europa central)",
+        "verificationAddress": "",
+        "signature": "..."
     }
 }
 ```

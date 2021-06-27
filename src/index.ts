@@ -10,7 +10,7 @@ const port = 5000;
 
 // Generate key pair
 app.get('/certification-entity/generate', (req, res) => {
-  const certificationEntity = new CertificationEntity('');
+  const certificationEntity = new CertificationEntity();
   certificationEntity.generateKeys();
 
   res.status(200).send(new ServiceResponse(true, certificationEntity));
